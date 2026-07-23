@@ -41,9 +41,10 @@ public class EmployeeService {
     private final PasswordEncoder passwordEncoder;
 
     public EmployeeService(UserRepository userRepository, EmployeeRepository employeeRepository,
-                           EmployeeSaleRepository employeeSaleRepository,
-                           CourseRepository courseRepository, InquiryRepository inquiryRepository, FollowUpRepository followUpRepository,
-                           PurchaseRepository purchaseRepository, PasswordEncoder passwordEncoder) {
+            EmployeeSaleRepository employeeSaleRepository,
+            CourseRepository courseRepository, InquiryRepository inquiryRepository,
+            FollowUpRepository followUpRepository,
+            PurchaseRepository purchaseRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.employeeRepository = employeeRepository;
         this.courseRepository = courseRepository;
@@ -181,7 +182,7 @@ public class EmployeeService {
         return followUpRepository.getPhoneNoByEmailDate(email, followUpDate);
     }
 
-    public SalesProjection getIndiEmpDetailsAndSales() {
+    public List<SalesProjection> getIndiEmpDetailsAndSales() {
         return employeeSaleRepository.getIndiEmpDetailsAndSales();
     }
 

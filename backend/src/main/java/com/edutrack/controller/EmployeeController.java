@@ -1,5 +1,6 @@
 package com.edutrack.controller;
 
+import com.edutrack.repository.EmployeeSaleRepository;
 import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
@@ -28,16 +29,19 @@ import com.edutrack.util.ApiResponse;
 @RequestMapping("/api/emp")
 public class EmployeeController {
 
+    private final EmployeeSaleRepository employeeSaleRepository;
     private final EmployeeRepository employeeRepository;
     private final UserRepository userRepository;
     private final EmployeeService employeeService;
     private final InquiryRepository inquiryRepository;
 
     public EmployeeController(EmployeeService employeeService, UserRepository userRepository,
-                              EmployeeRepository employeeRepository, InquiryRepository inquiryRepository) {
+            EmployeeRepository employeeRepository, InquiryRepository inquiryRepository,
+            EmployeeSaleRepository employeeSaleRepository) {
         this.employeeService = employeeService;
         this.userRepository = userRepository;
         this.employeeRepository = employeeRepository;
+        this.employeeSaleRepository = employeeSaleRepository;
         this.inquiryRepository = inquiryRepository;
     }
 
@@ -64,12 +68,13 @@ public class EmployeeController {
             return ResponseEntity.status(HttpStatus.OK).body(new ApiResponse<>(true, null, empDetails.get()));
         }
 
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ApiResponse<>(false, "Employee not present!", null));
+        return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                .body(new ApiResponse<>(false, "Employee not present!", null));
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<ApiResponse<String>> putMethodName(@PathVariable Long id,
-                                                             @RequestBody EditEmployeeRequest request) {
+            @RequestBody EditEmployeeRequest request) {
         employeeService.editEmployee(id, request);
         return ResponseEntity.ok(new ApiResponse<>(true, "Employee details updated successfully.", null));
     }
@@ -103,17 +108,23 @@ public class EmployeeController {
 
     @GetMapping("/getPhone")
     public ResponseEntity<ApiResponse<String>> getPhoneByEmailDate(Principal principal,
-                                                                   @RequestParam String followUpDate) {
+            @RequestParam String followUpDate) {
         String phone = employeeService.getPhoneByEmailAndDate(principal.getName(), followUpDate);
         if (phone == null) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ApiResponse<>(false, "No Records Found...", null));
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body(new ApiResponse<>(false, "No Records Found...", null));
         }
         return ResponseEntity.ok(new ApiResponse<>(true, "Records Found.", phone));
     }
 
     @GetMapping("/getIndivSales")
-    public ResponseEntity<ApiResponse<SalesProjection>> getSalesProjection() {
+    public ResponseEntity<ApiResponse<List<SalesProjection>>> getSalesProjection() {
         return ResponseEntity.ok(new ApiResponse<>(true, "Success", employeeService.getIndiEmpDetailsAndSales()));
+    }
+
+    @GetMapping("/getTotalSale")
+    public ResponseEntity<ApiResponse<Double>> getTotalSaleByEmp() {
+        return ResponseEntity.ok(new ApiResponse<>(true, "Success", employeeSaleRepository.getTotalSalesFromEmp()));
     }
 
 }

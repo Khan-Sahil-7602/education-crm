@@ -199,3 +199,43 @@ export async function getFollowUpPhoneNo(followUpDate) {
 
   return result;
 }
+
+export async function getEmpIndivTotalSales() {
+  const token = getToken();
+
+  const response = await fetch("http://localhost:8080/api/emp/getIndivSales", {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    },
+  });
+
+  const result = await response.json();
+
+  if (!response.ok) {
+    throw new Error("Fetch individual sale details failed!");
+  }
+
+  return result;
+}
+
+export async function getTotalSaleByEmp() {
+  const token = getToken();
+
+  const response = await fetch("http://localhost:8080/api/emp/getTotalSale", {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    },
+  });
+
+  const result = await response.json();
+
+  if (!response.ok) {
+    throw new Error("Fetch total sales failed!");
+  }
+
+  return result;
+}

@@ -35,7 +35,7 @@ const CustomerPurchasedCourse = lazy(
   () => import("./pages/admin/CustomerPurchasedCourse"),
 );
 
-const EmployeeSales = lazy(() => import("./pages/admin/EmployeeSales"));
+const Sales = lazy(() => import("./pages/admin/Sales"));
 
 import Loader from "./pages/Loader";
 import ProtectedRoute from "./routes/ProtectedRoute";
@@ -75,7 +75,7 @@ function App() {
             path="/courseDetails/:id"
             element={<CustomerPurchasedCourse />}
           />
-          <Route path="/totalSales" element={<EmployeeSales />} />
+          <Route path="/totalSales" element={<Sales />} />
         </Route>
 
         {/* Employee */}
