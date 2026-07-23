@@ -1,0 +1,356 @@
+/* banner section start */
+#main-banner {
+  height: calc(100vh - 70px);
+  padding: 0 10rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-image: linear-gradient(to top, #f3e6fd 0%, #f6f3ff 100%);
+}
+
+.main-banner-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.main-banner-left .desc-line-1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.main-banner-left .desc-line-1 p {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #6cb46c;
+}
+
+.main-banner-left .banner-heading {
+  font-size: 2.5rem;
+  font-weight: 600;
+  opacity: 0.8;
+  line-height: 3rem;
+}
+
+.main-banner-left .banner-desc {
+  font-size: 1rem;
+  font-weight: 400;
+  opacity: 0.8;
+}
+
+.main-banner-left .main-banner-search-box {
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  padding: 0 1rem;
+  height: 65px;
+  width: 100%;
+  background: #fcfcfc;
+  border-radius: 50px;
+  position: relative;
+}
+
+.main-banner-left .main-banner-search-box input {
+  width: 90%;
+  height: 100%;
+  border: none;
+  outline: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border-radius: 50px;
+  font-family: inherit;
+}
+
+.main-banner-left .main-banner-search-box button {
+  border: none;
+  outline: none;
+  background: #503bef;
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  height: 55px;
+  width: 55px;
+  border-radius: 50%;
+  transform: translateY(-50%);
+  font-size: 1.3rem;
+  font-weight: 100;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.main-banner-left .main-banner-keywords {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.main-banner-left .main-banner-keywords div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.main-banner-left .main-banner-keywords div p {
+  font-size: 0.8rem;
+  font-weight: 400;
+}
+
+.main-banner-left .main-banner-keywords div img {
+  width: 20px;
+}
+/* banner section end */
+
+/* course section start */
+#courses {
+  padding: 0 10rem 0;
+  margin-top: 5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.course-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.course-heading h1 {
+  font-size: 2rem;
+  font-weight: 500;
+  opacity: 0.6;
+}
+
+.course-heading a {
+  text-decoration: none;
+  color: #523fd1;
+  font-size: 1.2rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+}
+
+.course-card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.3rem;
+}
+
+.course-card {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border-radius: 1.3rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.course-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(0px);
+  transition: backdrop-filter 0.3s ease;
+  z-index: 1;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.buy-course-btn {
+  outline: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.8);
+  z-index: 2;
+  opacity: 0;
+  transition: all 0.3s ease;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  background: #523fd1;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+.course-card:hover::before {
+  opacity: 1;
+  backdrop-filter: blur(8px);
+}
+
+.course-card:hover .buy-course-btn {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.course-img img {
+  width: 100%;
+  height: auto;
+  border-radius: 0.9rem;
+}
+
+.course-name {
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-top: 1rem;
+}
+
+.course-mentor {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  margin-top: 0.7rem;
+}
+
+.course-mentor span {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.course-rating-price {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0.7rem;
+}
+
+.course-price {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+}
+
+.course-price span {
+  color: green;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.hr-line {
+  width: 100%;
+  height: 1px;
+  background: lightgray;
+  margin-top: 1rem;
+}
+
+.course-stats {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+}
+
+.course-chapter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+}
+
+.course-chapter img {
+  width: 20px;
+}
+
+.course-chapter span {
+  font-size: 0.8rem;
+  font-weight: 500;
+  opacity: 0.8;
+}
+
+.course-students {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+}
+
+.course-students img {
+  width: 20px;
+}
+
+.course-students span {
+  font-size: 0.8rem;
+  font-weight: 500;
+  opacity: 0.8;
+}
+/* course section end */
+
+/* newsletter section start */
+#newsletter {
+  margin-top: 5rem;
+  padding: 0 10rem 0;
+}
+
+.newsletter-container {
+  padding: 5rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  background: linear-gradient(90deg, #1e40af 0%, #0ea5e9 100%);
+  border-radius: 2rem;
+  color: #fff;
+  text-align: center;
+}
+
+.newsletter-search-box {
+  height: 70px;
+  width: 50%;
+  background: #fcfcfc;
+  border-radius: 50px;
+  position: relative;
+}
+
+.newsletter-search-box input {
+  padding: 0 1rem;
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 50px;
+  font-family: inherit;
+}
+
+.newsletter-search-box button {
+  border: none;
+  outline: none;
+  background: #523fd1;
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  height: 55px;
+  width: 55px;
+  border-radius: 50%;
+  transform: translateY(-50%);
+  font-size: 1.3rem;
+  font-weight: 100;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+/* newsletter section end */

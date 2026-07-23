@@ -1,0 +1,11 @@
+.purchased-course-container {
+  margin: 1rem;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 1rem;
+  width: 100%;
+}
+
+.purchased-course-container > h1 {
+  margin-bottom: 2rem;
+}

@@ -1,0 +1,46 @@
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  z-index: 9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal {
+  height: 600px;
+  width: 800px;
+  background: #fff;
+  overflow-y: scroll;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  position: relative;
+}
+
+.modal > h2 {
+  font-weight: 600;
+  text-align: center;
+}
+
+.close-btn {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  border: none;
+  outline: none;
+  background: transparent;
+  cursor: pointer;
+  color: red;
+}
+
+.form-group textarea {
+  outline: none;
+  border: 1px solid #ccc;
+  border-radius: 0.3rem;
+  padding: 0.8rem;
+  font-family: inherit;
+  font-size: 0.95rem;
+}

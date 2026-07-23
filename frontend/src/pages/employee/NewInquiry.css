@@ -1,0 +1,33 @@
+.dashboard {
+  width: 100%;
+  padding: 1rem;
+  overflow-y: auto;
+}
+
+.dashboard > h2 {
+  font-weight: 600;
+  color: #503bef;
+  margin-bottom: 2rem;
+}
+
+.dashboard form textarea {
+  border: none;
+  outline: none;
+  border: 1px solid #ccc;
+  border-radius: 0.3rem;
+  padding: 0.7rem;
+  font-family: inherit;
+}
+
+#inq-btn {
+  margin-top: 1rem;
+  height: 50px;
+  border: none;
+  outline: none;
+  background: #503bef;
+  border-radius: 0.3rem;
+  font-family: inherit;
+  font-size: 1rem;
+  color: #fff;
+  cursor: pointer;
+}

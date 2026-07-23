@@ -1,0 +1,124 @@
+header {
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10rem;
+  box-shadow: rgba(0, 0, 0, 0.05) 1.95px 1.95px 2.6px;
+}
+
+header .logo a {
+  text-decoration: none;
+  color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+header nav ul {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+header nav ul li {
+  list-style: none;
+}
+
+header nav ul li a {
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #000;
+  position: relative;
+}
+
+header nav ul li a::before {
+  content: "";
+  height: 2px;
+  width: 0;
+  background: #503bef;
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  transition: all 0.3s linear;
+}
+
+header nav ul li a:hover::before {
+  width: 50%;
+}
+
+header .nav-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+header .nav-buttons a {
+  height: 45px;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s linear;
+}
+
+header .nav-buttons a:nth-child(1) {
+  border: 2px solid transparent;
+  background: #503bef;
+  color: #fff;
+}
+
+header .nav-buttons a:nth-child(1):hover {
+  background: transparent;
+  border: 2px solid #503bef;
+  color: #503bef;
+}
+
+header .nav-buttons a:nth-child(2) {
+  border: 2px solid #503bef;
+  color: #503bef;
+}
+
+header .nav-buttons a:nth-child(2):hover {
+  border: 2px solid transparent;
+  background: #503bef;
+  color: #fff;
+}
+
+.btn-logout {
+  border: none;
+  outline: none;
+  background: tomato;
+  height: 45px;
+  padding: 0 2rem;
+  border-radius: 50px;
+  color: #fff;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.profile-link {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background: transparent;
+  margin-right: 2rem;
+}
+
+.profile-link img {
+  width: 30px;
+  height: auto;
+}

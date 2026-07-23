@@ -1,0 +1,26 @@
+.sell-course-form {
+  width: 100%;
+  padding: 1rem;
+  margin: 1rem;
+  border: 1px solid gray;
+  border-radius: 1rem;
+}
+
+.sell-course-form > h3 {
+  font-size: 1.5rem;
+  opacity: 0.8;
+  margin-bottom: 2rem;
+}
+
+.sell-course-btn {
+  border: none;
+  outline: none;
+  margin-top: auto;
+  background: #503bef;
+  color: #ffffff;
+  padding: 0.75rem;
+  border-radius: 0.3rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}

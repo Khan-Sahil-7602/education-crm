@@ -1,0 +1,39 @@
+.employee-sales {
+  margin: 1rem;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 1rem;
+  width: 100%;
+}
+
+.employee-sales > h1 {
+  font-size: 1.8rem;
+}
+
+.employee-sales > p {
+  font-size: 0.85rem;
+  margin-bottom: 2rem;
+}
+
+.employee-sales-information {
+  border: 1px solid #ddd;
+  border-radius: 0.4rem;
+  padding: 1rem;
+  box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.15);
+}
+
+.employee-sales-information > h2 {
+  color: green;
+  font-weight: 500;
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.employee-sales-information > h2 span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 0.5rem;
+}

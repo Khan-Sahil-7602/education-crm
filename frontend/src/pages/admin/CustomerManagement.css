@@ -1,0 +1,87 @@
+.customer-manage-container {
+  width: 100%;
+  margin: 1rem;
+  border: 1px solid #ccc;
+  padding: 1rem;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.customer-manage-container > h1 {
+  font-size: 1.8rem;
+  font-weight: 500;
+}
+
+.customer-manage-container > p {
+  font-size: 0.85rem;
+  font-weight: 500;
+  opacity: 0.75;
+  margin-bottom: 2rem;
+}
+
+.customer-desc-container h2 {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  color: green;
+}
+
+table {
+  flex: 1;
+  overflow-y: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: 100%;
+}
+
+th,
+td {
+  padding: 12px;
+  text-align: center;
+}
+
+th {
+  background: #5478ff;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+tr:nth-child(odd) {
+  background: #f2f2f2;
+}
+
+tr:nth-child(even) {
+  background: #d6f4ed;
+}
+
+thead th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.full-desc-link {
+  text-decoration: none;
+  color: green;
+}
+
+.ban-btn {
+  border: none;
+  outline: none;
+  background: transparent;
+  color: red;
+  cursor: pointer;
+}
+
+.unban-btn {
+  border: none;
+  outline: none;
+  background: transparent;
+  color: green;
+  cursor: pointer;
+}
