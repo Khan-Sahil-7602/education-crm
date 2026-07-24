@@ -49,6 +49,9 @@ function Header() {
           <li>
             <Link to="#">Contact</Link>
           </li>
+          <li>
+            <Link to={"/feedBack"}>FeedBack</Link>
+          </li>
         </ul>
       </nav>
       <div className="nav-buttons">

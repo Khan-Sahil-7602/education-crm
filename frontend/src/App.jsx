@@ -45,6 +45,7 @@ import EmployeeProfile from "./pages/employee/EmpProfile";
 import SellCourse from "./pages/employee/SellCourse";
 import NewInquiry from "./pages/employee/NewInquiry";
 import FollowUp from "./pages/employee/FollowUp";
+import FeedBackForm from "./pages/customer/FeedBackForm";
 
 function App() {
   return (
@@ -59,6 +60,7 @@ function App() {
         <Route element={<ProtectedRoute role={"CUSTOMER"} />}>
           <Route path="/profile" element={<CustomerProfile />} />
           <Route path="/my-course" element={<MyCourse />} />
+          <Route path="/feedBack" element={<FeedBackForm />} />
         </Route>
 
         {/* ADMIN */}

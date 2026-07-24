@@ -12,11 +12,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.edutrack.dto.CustomerCourseProjection;
+import com.edutrack.dto.CustomerFeedbackRequest;
 import com.edutrack.dto.CustomerProjection;
 import com.edutrack.model.User;
 import com.edutrack.repository.UserRepository;
 import com.edutrack.service.CustomerService;
 import com.edutrack.util.ApiResponse;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
 @RequestMapping("/api/customer")
@@ -68,6 +70,12 @@ public class CustomerController {
     public ResponseEntity<ApiResponse<String>> unBanUser(@RequestParam Long userId) {
         customerService.unBanUser(userId);
         return ResponseEntity.ok(new ApiResponse<>(true, "User unbanned!", null));
+    }
+
+    @PostMapping("/feedback")
+    public ResponseEntity<ApiResponse<String>> postMethodName(@RequestBody CustomerFeedbackRequest request) {
+        customerService.handleCustomerFeedback(request);
+        return ResponseEntity.ok(new ApiResponse<>(true, "Feedback Sent!", null));
     }
 
 }

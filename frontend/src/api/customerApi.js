@@ -103,3 +103,24 @@ export async function unBanUser(userId) {
 
   return result;
 }
+
+export async function handleCustomerFeedback(feedbackData) {
+  const token = getToken();
+
+  const response = await fetch(`http://localhost:8080/api/customer/feedback`, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(feedbackData),
+  });
+
+  const result = await response.json();
+
+  if (!response.ok) {
+    throw new Error("Feedback not sent...");
+  }
+
+  return result;
+}
