@@ -41,7 +41,7 @@ export async function getAllEmp() {
 export async function fetchSingleEmployee(id) {
   const token = getToken();
 
-  const response = await fetch(`${URL}/${id}`, {
+  const response = await fetch(`${URL}/edit-emp/${id}`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",

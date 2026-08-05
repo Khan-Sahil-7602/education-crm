@@ -46,13 +46,14 @@ import SellCourse from "./pages/employee/SellCourse";
 import NewInquiry from "./pages/employee/NewInquiry";
 import FollowUp from "./pages/employee/FollowUp";
 import FeedBackForm from "./pages/customer/FeedBackForm";
+import ErrorPage from "./pages/ErrorPage";
 
 function App() {
   return (
     <Suspense fallback={<Loader />}>
       <Routes>
         {/* public */}
-        <Route index element={<HomePage />} />
+        <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
 
@@ -71,7 +72,7 @@ function App() {
           <Route path="/edit-course/:id" element={<EditCourse />} />
           <Route path="/manage-emp" element={<EmployeeManagement />} />
           <Route path="/add-emp" element={<AddEmployee />} />
-          <Route path="/:id" element={<EditEmployee />} />
+          <Route path="/edit-emp/:id" element={<EditEmployee />} />
           <Route path="/customerManage" element={<CustomerManagement />} />
           <Route
             path="/courseDetails/:id"
@@ -88,6 +89,9 @@ function App() {
           <Route path="/new-inquiry" element={<NewInquiry />} />
           <Route path="/follow-up" element={<FollowUp />} />
         </Route>
+
+        {/* Error Page */}
+        <Route path="*" element={<ErrorPage />} />
       </Routes>
     </Suspense>
   );

@@ -16,7 +16,7 @@ function Register() {
 
   const [response, setResponse] = useState("");
 
-  const [error, setError] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleChange = (e) => {
     setUserData({
@@ -39,7 +39,7 @@ function Register() {
         role: "CUSTOMER",
       });
     } catch (error) {
-      setError(error.message);
+      setErrorMessage(error.message);
     }
   };
 
@@ -51,7 +51,7 @@ function Register() {
         <h2>Register</h2>
 
         {response && <p style={{ color: "green" }}>{response}</p>}
-        {error && <p style={{ color: "red" }}>{error}</p>}
+        {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
 
         <form onSubmit={handleSubmit}>
           <div className="form-field">
@@ -93,7 +93,7 @@ function Register() {
           <div className="form-field">
             <label htmlFor="phone">Phone</label>
             <input
-              type="number"
+              type="tel"
               name="phone"
               id="phone"
               value={userData.phone}

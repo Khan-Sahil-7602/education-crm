@@ -72,7 +72,7 @@ public class EmployeeController {
                 .body(new ApiResponse<>(false, "Employee not present!", null));
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/edit-emp/{id}")
     public ResponseEntity<ApiResponse<String>> putMethodName(@PathVariable Long id,
             @RequestBody EditEmployeeRequest request) {
         employeeService.editEmployee(id, request);
