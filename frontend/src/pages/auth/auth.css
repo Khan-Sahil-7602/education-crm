@@ -82,3 +82,8 @@ form button {
   margin-left: 0.3rem;
   font-weight: 500;
 }
+
+.validate-error {
+  font-size: 0.7rem;
+  color: rgb(255, 0, 0);
+}

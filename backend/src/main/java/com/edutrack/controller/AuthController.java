@@ -15,6 +15,7 @@ import com.edutrack.service.BlacklistTokenService;
 import com.edutrack.util.ApiResponse;
 
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api/auth")
@@ -29,15 +30,19 @@ public class AuthController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<ApiResponse<?>> register(@RequestBody RegisterRequest request) {
+    public ResponseEntity<ApiResponse<Object>> register(@RequestBody RegisterRequest request) {
         String message = authService.register(request);
         return ResponseEntity.status(HttpStatus.CREATED).body(new ApiResponse<>(true, message, null));
     }
 
     @PostMapping("/login")
-    public ResponseEntity<ApiResponse<?>> login(@RequestBody LoginRequest request) {
+    public ResponseEntity<ApiResponse<LoginResponse>> login(@Valid @RequestBody LoginRequest request) {
         LoginResponse response = authService.login(request);
-        return ResponseEntity.status(HttpStatus.OK).body(new ApiResponse<>(true, "Login successful", response));
+        if (response != null) {
+            return ResponseEntity.status(HttpStatus.OK).body(new ApiResponse<>(true, "Login successful", response));
+        }
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                .body(new ApiResponse<>(false, "Invalid email or password", null));
     }
 
     @PostMapping("/logout")

@@ -1,8 +1,15 @@
 package com.edutrack.dto;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+
 public class LoginRequest {
 
+    @NotBlank(message = "Email shouldn't be empty")
+    @Email(message = "Enter a valid email")
     private String email;
+
+    @NotBlank(message = "Password shouldn't be empty")
     private String password;
 
     public String getEmail() {

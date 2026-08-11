@@ -32,7 +32,9 @@ export async function loginUser(credentials) {
   const result = await response.json();
 
   if (!response.ok) {
-    throw new Error(result.message || "Login Failed");
+    const error = new Error(result.message);
+    error.data = result;
+    throw error;
   }
 
   return result;
