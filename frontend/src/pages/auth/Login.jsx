@@ -42,6 +42,7 @@ function Login() {
       }
     } catch (error) {
       const data = error.data;
+
       if (data?.message) {
         setErrorMsg(data.message);
       } else if (data && typeof data === "object") {

@@ -4,7 +4,11 @@ import Header from "../../components/Header";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router";
-import { registerUser } from "../../services/authService";
+import {
+  checkEmailExists,
+  checkPhoneExists,
+  registerUser,
+} from "../../services/authService";
 
 import "./auth.css";
 
@@ -13,15 +17,9 @@ function Register() {
     register,
     handleSubmit,
     formState: { errors },
+    setError,
     reset,
-  } = useForm({
-    defaultValues: {
-      name: "",
-      email: "",
-      password: "",
-      phone: "",
-    },
-  });
+  } = useForm({ mode: "onBlur", reValidateMode: "onChange" });
 
   const [response, setResponse] = useState("");
 
@@ -33,7 +31,17 @@ function Register() {
       setResponse(res.message);
       reset();
     } catch (error) {
-      setErrorMessage(error.message);
+      const data = error.data;
+
+      if (data?.message) {
+        setErrorMessage(data.message);
+      } else if (data && typeof data === "object") {
+        Object.entries(data).forEach(([field, message]) => {
+          setError(field, { type: "server", message: message });
+        });
+      } else {
+        setErrorMessage("Something went wrong, Please try again.");
+      }
     }
   };
 
@@ -82,11 +90,14 @@ function Register() {
                 validate: {
                   notAdmin: (fieldValue) => {
                     return (
-                      fieldValue.toLowerCase().startsWith("admin") &&
+                      !fieldValue.toLowerCase().startsWith("admin") ||
                       "Email can't have the word 'admin'"
                     );
                   },
-                  // emailEsists: () => {},
+                  emailEsists: async (fieldValue) => {
+                    const data = await checkEmailExists(fieldValue);
+                    return !data || "Email already exists";
+                  },
                 },
               })}
             />
@@ -106,7 +117,7 @@ function Register() {
                   value:
                     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]{8,}$/,
                   message:
-                    "Password must contain at least one lowercase, one uppercase, one digit, one special character(@$!%*?&#) and minimum 8 characters total",
+                    "Password must contain at least one(lowercase, uppercase, digit, special character(@$!%*?&#)), total 8 characters(minimum)",
                 },
               })}
             />
@@ -125,6 +136,12 @@ function Register() {
                 pattern: {
                   value: /^[6-9]\d{9}$/,
                   message: "Enter a valid 10 digits no",
+                },
+                validate: {
+                  phoneExists: async (fieldValue) => {
+                    const data = await checkPhoneExists(fieldValue);
+                    return !data || "Phone number already exists";
+                  },
                 },
               })}
             />

@@ -58,4 +58,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
         @Query(value = SELECT_QUERY2, nativeQuery = true)
         List<CustomerCourseProjection> getCustomerPurchasedCourse(Long userId);
 
+        boolean existsByPhone(String phone);
+
 }

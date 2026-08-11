@@ -2,6 +2,28 @@ import { getToken } from "../utils/auth";
 
 const URL = "http://localhost:8080/api/auth";
 
+export async function checkEmailExists(email) {
+  const response = await fetch(
+    `${URL}/emailExist?email=${encodeURIComponent(email)}`,
+    {
+      method: "GET",
+    },
+  );
+
+  return response.json();
+}
+
+export async function checkPhoneExists(phone) {
+  const response = await fetch(
+    `${URL}/phoneExist?phone=${encodeURIComponent(phone)}`,
+    {
+      method: "GET",
+    },
+  );
+
+  return response.json();
+}
+
 export async function registerUser(userData) {
   const response = await fetch(`${URL}/register`, {
     method: "POST",
@@ -14,7 +36,9 @@ export async function registerUser(userData) {
   const result = await response.json();
 
   if (!response.ok) {
-    throw new Error(result.message || "Registration failed!");
+    const error = new Error();
+    error.data = result;
+    throw error;
   }
 
   return result;
@@ -32,7 +56,7 @@ export async function loginUser(credentials) {
   const result = await response.json();
 
   if (!response.ok) {
-    const error = new Error(result.message);
+    const error = new Error();
     error.data = result;
     throw error;
   }

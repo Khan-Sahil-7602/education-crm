@@ -2,14 +2,17 @@ package com.edutrack.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.edutrack.dto.LoginRequest;
 import com.edutrack.dto.LoginResponse;
 import com.edutrack.dto.RegisterRequest;
+import com.edutrack.repository.UserRepository;
 import com.edutrack.service.AuthService;
 import com.edutrack.service.BlacklistTokenService;
 import com.edutrack.util.ApiResponse;
@@ -23,10 +26,13 @@ public class AuthController {
 
     private final AuthService authService;
     private final BlacklistTokenService blacklistTokenService;
+    private final UserRepository userRepository;
 
-    public AuthController(AuthService authService, BlacklistTokenService blacklistTokenService) {
+    public AuthController(AuthService authService, BlacklistTokenService blacklistTokenService,
+            UserRepository userRepository) {
         this.authService = authService;
         this.blacklistTokenService = blacklistTokenService;
+        this.userRepository = userRepository;
     }
 
     @PostMapping("/register")
@@ -61,4 +67,15 @@ public class AuthController {
         return ResponseEntity.status(HttpStatus.OK).body(
                 new ApiResponse<>(true, "Logged out successfully", null));
     }
+
+    @GetMapping("/emailExist")
+    public boolean getEmailExist(@RequestParam String email) {
+        return userRepository.existsByEmail(email);
+    }
+
+    @GetMapping("/phoneExist")
+    public boolean getPhoneNoExist(@RequestParam String phone) {
+        return userRepository.existsByPhone(phone);
+    }
+
 }
